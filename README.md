@@ -14,15 +14,7 @@ https://staging.d2vpf59fscl1pp.amplifyapp.com/
 
 User submissions flow through a serverless AWS pipeline:
 
-Frontend (AWS Amplify)
-        ↓
-API Gateway (REST API)
-        ↓
-AWS Lambda (request handler + validation)
-        ↓
-Amazon SES (email delivery)
-        ↓
-Recipient Email Inbox
+Frontend (AWS Amplify) > API Gateway (REST API) > AWS Lambda (request handler + validation) > Amazon SES (email delivery) > Recipient Email Inbox
 
 ---
 
@@ -72,15 +64,13 @@ When a user submits the form:
 ## Project Structure
 
 /frontend
-  - Static frontend (HTML/CSS/JS form)
-  - Amplify deployment configuration
+  - index.html
 
 /lambda
-  - Handler function (Python/Node.js)
-  - Input validation logic
-  - SES email sending integration
+  - lambda_function.py
 
 README.md
+architecture.png 
 
 ---
 
@@ -111,16 +101,6 @@ README.md
 - SES uses verified sender identities
 - API Gateway acts as a controlled public interface
 - No exposed backend servers or persistent instances
-
----
-
-## Future Improvements
-
-- Add rate limiting and spam protection
-- Add CAPTCHA verification to the form
-- Store submissions in DynamoDB for history tracking
-- Add admin dashboard for message management
-- Improve retry handling for failed SES deliveries
 
 ---
 
